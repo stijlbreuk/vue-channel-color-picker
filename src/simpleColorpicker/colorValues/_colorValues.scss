@@ -1,0 +1,40 @@
+.sb-color-values{
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  input{
+    flex-grow: 1;
+    width: 100%;
+    max-width: 3.5rem;
+    text-align: center;
+    padding: .3rem .3rem;
+    border-radius: 4px;
+    font-size: .8rem;
+    border: 2px solid #bababa;
+    font-weight: 500;
+    &::-webkit-inner-spin-button, 
+    &::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+    }
+  }
+  span{
+    font-weight: 700;
+    font-size: .7rem;
+    color: #bababa;
+    font-family: sans-serif;
+    margin-top: .1rem;
+  }
+  &_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin-right: .4rem;
+    &:last-child{
+      margin-right: 0;
+    }
+  }
+}

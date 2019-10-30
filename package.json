@@ -1,23 +1,67 @@
 {
-  "name": "simple-colorpicker",
+  "name": "vue-simple-color-picker",
   "version": "0.1.0",
-  "private": true,
+  "description": "A RGB, CMYK & Graytone color Picker",
+  "author": "Stijlbreuk",
+  "main": "dist/VueSimpleColorPicker.umd.js",
+  "module": "dist/VueSimpleColorPicker.common.js",
+  "unpkg": "dist/VueSimpleColorPicker.umd.min.js",
+  "browser": {
+    "./simpleColorPicker": "src/simpleColorPicker/ColorPicker.vue"
+  },
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "serve": "vue serve --open examples/main.js",
+    "build": "vue-cli-service build --target lib --name VueSimpleColorPicker ./src/wrapper.js",
+    "lint": "run-s lint:all:*",
+    "prepublishOnly": "npm run build",
+    "build:staging": "vue-cli-service build --mode staging",
+    "lint:all:eslint": "npm run lint:eslint -- --fix --ext .js,.vue .",
+    "lint:all:markdownlint": "npm run lint:markdownlint -- --fix \"docs/*.md\" \"*.md\"",
+    "lint:dry-run": "run-s lint:dry-run:*",
+    "lint:dry-run:eslint": "npm run lint:eslint -- --ext .js,.vue .",
+    "lint:dry-run:markdownlint": "npm run lint:markdownlint -- \"docs/*.md\" \"*.md\"",
+    "lint:dry-run:stylelint": "npm run lint:stylelint -- \"src/**/*.{vue,scss}\"",
+    "lint:eslint": "eslint",
+    "lint:markdownlint": "markdownlint",
+    "lint:stylelint": "stylelint"
   },
   "dependencies": {
-    "core-js": "^3.1.2",
-    "vue": "^2.6.10"
+    "color": "^3.1.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
     "@vue/cli-plugin-eslint": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-preset-airbnb": "^3.2.1",
+    "core-js": "^3.1.2",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "markdownlint-cli": "^0.14.1",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "reset-css": "4.x",
+    "sass-loader": "^8.0.0",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recess-order": "^2.0.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.4",
+    "vue": "^2.6.10",
+    "vue-cli-plugin-stijlbreuk": "git://github.com/stijlbreuk/vue-cli-plugin-stijlbreuk.git#master",
     "vue-template-compiler": "^2.6.10"
+  },
+  "keywords": [
+    "vue",
+    "color-picker",
+    "cmyk",
+    "rgb",
+    "gray",
+    "color"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stijlbreuk/vue-simple-color-picker.git"
   }
 }
