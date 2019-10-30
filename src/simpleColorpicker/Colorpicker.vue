@@ -17,14 +17,15 @@
         :style="{background: currentColor.rgb().string()}"
       ></div>
       <div
-class="sb-color_picker-current-icon"
-           :class="{'s_disabled': disabled}"
->
+        class="sb-color_picker-current-icon"
+        :class="{'s_disabled': disabled}"
+      >
         <svg
-width="20"
-             height="20"
-viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
->
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M16.6667 7.50001L9.99999 14.1667L3.33332 7.50001L4.51166 6.32167L9.99999 11.81L15.4883 6.32167"
           />
@@ -32,8 +33,10 @@ viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
       </div>
     </div>
     <transition name="open-color-picker">
-      <div v-if="open"
-class="sb-color_picker-picker">
+      <div
+        v-if="open"
+        class="sb-color_picker-picker"
+      >
         <ul class="sb-color_picker-picker-list">
           <li
             v-for="(type, index) in types"
@@ -85,17 +88,17 @@ export default {
     },
     color: {
       type: [
-String,
-Object
-],
+        String,
+        Object
+      ],
       default() {
         return {
           type: 'rgb',
           channels: [
-0,
-0,
-0
-]
+            0,
+            0,
+            0
+          ]
         };
       }
     },
@@ -114,20 +117,20 @@ Object
       canClick: null,
       focused: null,
       types: [
-                'Gray',
-                'RGB',
-                'CMYK'
-            ]
+        'Gray',
+        'RGB',
+        'CMYK'
+      ]
     };
   },
   computed: {
     currentColor() {
       if (this.color.type === 'gray') {
         return Color.hsv({
- h: 0,
-s: 0,
-v: 100 - this.color.channels[0] 
-});
+          h: 0,
+          s: 0,
+          v: 100 - this.color.channels[0]
+        });
       }
       return Color[this.color.type](this.color.channels);
     },
@@ -147,9 +150,9 @@ v: 100 - this.color.channels[0]
       }
 
       const gray = this.getGrayScale(this.currentColor);
-      return { 
-gray
- };
+      return {
+        gray
+      };
     }
   },
   watch: {
@@ -234,8 +237,8 @@ gray
       if (this.activeType === 'gray') {
         const gray = this.getGrayScale(color);
         channels = [
-                    gray
-                ];
+          gray
+        ];
       } else {
         channels = color[this.activeType]()
           .round()
@@ -481,4 +484,4 @@ export default {
 };
 </script>
 
-<style lang="scss" src="./_color-picker.scss" />
+<style lang="scss" src="./_colorPicker.scss" />
