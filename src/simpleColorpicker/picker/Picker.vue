@@ -1,28 +1,46 @@
 <template>
-  <div class="sb-picker" :class="[`is-${type}`, {'is-small' : type === 'gray'}]">
+  <div
+    class="sb-picker"
+    :class="[`is-${type}`, {'is-small' : type === 'gray'}]"
+  >
     <div class="sb-picker_saturation">
       <div
-        class="sb-picker_saturation_container"
         ref="saturation"
+        class="sb-picker_saturation_container"
         @mousedown.prevent="saturationDown"
         @touchstart.prevent="saturationDown"
       >
-        <div class="sb-picker_saturation_container_background"
-          :style="{'background-color': type !== 'gray' ? hueBg : null}">
+        <div
+          class="sb-picker_saturation_container_background"
+          :style="{'background-color': type !== 'gray' ? hueBg : null}"
+        >
         </div>
-        <div class="sb-picker_saturation_container_pointer" :style="{top: `${saturationTop}%`, left: type === 'gray' ? grayLeft : `${saturationLeft}%`, background: color.rgb().string()}"></div>
+        <div
+          class="sb-picker_saturation_container_pointer"
+          :style="{
+            top: `${saturationTop}%`,
+            left: type === 'gray' ? grayLeft : `${saturationLeft}%`,
+            background: color.rgb().string()
+          }"
+        ></div>
       </div>
     </div>
     <transition name="hue-fade">
-      <div class="sb-picker_hue" v-if="type !== 'gray'">
-        <div 
-          class="sb-picker_hue_container" 
+      <div
+        v-if="type !== 'gray'"
+        class="sb-picker_hue"
+      >
+        <div
           ref="hue"
+          class="sb-picker_hue_container"
           @mousedown.prevent="hueDown"
           @touchstart.prevent="hueDown"
         >
           <div class="sb-picker_hue_container_background"></div>
-          <div class="sb-picker_hue_container_pointer" :style="{left: `${hueLeft}%`, background: hueBg}"></div>
+          <div
+            class="sb-picker_hue_container_pointer"
+            :style="{left: `${hueLeft}%`, background: hueBg}"
+          ></div>
         </div>
       </div>
     </transition>
@@ -34,54 +52,64 @@ import Color from 'color';
 
 export default {
   props: {
-    type: String,
-    color: Object,
-    forceColor: Boolean
+    type: {
+      type: String,
+      required: true
+    },
+    color: {
+      type: Object,
+      required: true
+    },
+    forceColor: {
+      type: Boolean,
+      default: false
+    }
   },
-  data(){
-    return{
+  data() {
+    return {
       hsv: null,
       grayLeft: 0,
       saturationLeft: 0,
       saturationTop: 0
+    };
+  },
+  computed: {
+    hueBg() {
+      if (!this.hsv) {
+        return;
+      }
+
+      // eslint-disable-next-line consistent-return
+      return `hsl(${this.hsv.h}, 100%, 50%)`;
+    },
+    hueLeft() {
+      if (!this.hsv) {
+        return;
+      }
+      // eslint-disable-next-line consistent-return
+      return (this.hsv.h * 100) / 360;
     }
   },
-  mounted(){
-    this.setColor(this.color);
-  },
-  watch:{
-    color(color){
+  watch: {
+    color(color) {
       this.setColor(color);
     }
   },
-  computed:{
-    hueBg(){
-      if(!this.hsv){
-        return;
-      }
-
-      return `hsl(${this.hsv.h}, 100%, 50%)`;
-    },
-    hueLeft(){
-      if(!this.hsv){
-        return;
-      }
-        
-      return (this.hsv.h * 100) / 360;
-    },
+  mounted() {
+    this.setColor(this.color);
   },
   methods: {
-    setBodyCursor(cursor){
+    setBodyCursor(cursor) {
       document.body.style.cursor = cursor ? 'pointer' : null;
     },
-    setColor(color){
+    setColor(color) {
       const hsv = color.hsv().object();
 
-      if(this.hsv){
+      if (this.hsv) {
         this.hsv.s = hsv.s;
         this.hsv.v = hsv.v;
 
-        if(this.forceColor){
+        if (this.forceColor) {
           this.hsv.h = hsv.h;
 
           this.saturationTop = (hsv.v * -1) + 100;
@@ -96,7 +124,7 @@ export default {
 
       this.hsv = hsv;
     },
-    saturationDown(e){
+    saturationDown(e) {
       this.saturationChange(e);
       document.addEventListener('mousemove', this.saturationChange);
       document.addEventListener('mouseup', this.saturationUp);
@@ -106,8 +134,8 @@ export default {
 
       this.setBodyCursor(true);
     },
-    saturationChange(e){
-      const saturation = this.$refs.saturation;
+    saturationChange(e) {
+      const { saturation } = this.$refs;
       const saturationWidth = saturation.clientWidth || saturation.offsetWidth;
       const saturationHeight = saturation.clientHeight || saturation.offsetHeight;
       const xOffset = saturation.getBoundingClientRect().left;
@@ -117,34 +145,34 @@ export default {
       let leftPos = pageX - xOffset;
       let topPos = pageY - yOffset;
 
-      if(leftPos < 0){
+      if (leftPos < 0) {
         leftPos = 0;
-      }else if(leftPos > saturationWidth){
+      } else if (leftPos > saturationWidth) {
         leftPos = saturationWidth;
       }
-      if(topPos < 0) {
+      if (topPos < 0) {
         topPos = 0;
-      }else if(topPos > saturationHeight){
+      } else if (topPos > saturationHeight) {
         topPos = saturationHeight;
       }
-      
+
       const s = (leftPos * 100 / saturationWidth);
       const v = (-(topPos * 100 / saturationHeight) + 100);
 
-      //set the color
+      // set the color
       this.hsv.v = v;
       this.hsv.s = s;
-      
-      //set the pointer (using colors to dictate the position can mess up due to color conversion!)
+
+      // set the pointer (using colors to dictate the position can mess up due to color conversion!)
       this.saturationLeft = s;
       this.saturationTop = (v * -1) + 100;
 
-      //use a separated gray pointer so the horizontal position does not interfere
+      // use a separated gray pointer so the horizontal position does not interfere
       this.grayLeft = `${leftPos}px`;
 
       this.$emit('colorChange', Color(this.hsv));
     },
-    saturationUp(){
+    saturationUp() {
       document.removeEventListener('mousemove', this.saturationChange);
       document.removeEventListener('mouseup', this.saturationUp);
 
@@ -152,7 +180,7 @@ export default {
       document.removeEventListener('touchend', this.saturationUp);
       this.setBodyCursor(false);
     },
-    hueDown(e){
+    hueDown(e) {
       this.hueChange(e);
       document.addEventListener('mousemove', this.hueChange);
       document.addEventListener('mouseup', this.hueUp);
@@ -161,8 +189,8 @@ export default {
       document.addEventListener('touchend', this.hueUp);
       this.setBodyCursor(true);
     },
-    hueChange(e){
-      const hue = this.$refs.hue;
+    hueChange(e) {
+      const { hue } = this.$refs;
       const hueWidth = hue.clientWidth || hue.offsetWidth;
       const xOffset = hue.getBoundingClientRect().left;
       const pageX = e.pageX || (e.touches ? e.touches[0].pageX : 0);
@@ -170,11 +198,11 @@ export default {
       let h;
       let percent;
 
-      if(left < 0){
+      if (left < 0) {
         h = 0;
-      }else if(left >= hueWidth){
+      } else if (left >= hueWidth) {
         h = 359;
-      }else{
+      } else {
         percent = (left * 100 / hueWidth);
         h = (360 * percent / 100);
       }
@@ -192,7 +220,7 @@ export default {
       this.setBodyCursor(false);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" src="./_picker.scss" />

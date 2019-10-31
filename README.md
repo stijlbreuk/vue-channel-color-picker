@@ -29,7 +29,7 @@ A plainly simple RGB, CMYK & Graytone color-picker.
 
 ### Basic
 
-<a href="[CODE SANDBOX LINK]" target="_blank"><img src="https://codesandbox.io/static/img/play-codesandbox.svg"/></a>
+<a href="https://codesandbox.io/s/vue-simple-color-picker-do7xu?fontsize=14" target="_blank"><img src="https://codesandbox.io/static/img/play-codesandbox.svg"/></a>
 
 ## Installation
 
@@ -45,19 +45,14 @@ ES6 modules
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <SimpleColorPicker :color="color" @colorChange="colorChanged" />
+      <simple-color-picker :color="color" @colorChange="colorChanged" />
     </div>
   </div>
 </template>
 
 <script>
-import SimpleColorPicker from "vue-simple-color";
-
 export default {
   name: "App",
-  components: {
-    SimpleColorPicker
-  },
   data() {
     return {
       color: {
@@ -139,7 +134,7 @@ Triggered when the color has been changed, returns the color object.
 
 ## Contributing
 
-Checkout [GitHub issues](https://github.com/stijlbreuk/[GITHUB REPOSITORY NAME]/issues) for any issues we need some help with.
+Checkout [GitHub issues](https://github.com/stijlbreuk/vue-simple-color-picker/issues) for any issues we need some help with.
 
 ```bash
 # Serve with hot reload (default at localhost:8080)
@@ -151,4 +146,4 @@ npm run bundle
 
 ## License
 
-[MIT](https://github.com/stijlbreuk/[GITHUB REPOSITORY NAME]/blob/master/readme.md)
+[MIT](https://github.com/stijlbreuk/vue-simple-color-picker/blob/master/readme.md)

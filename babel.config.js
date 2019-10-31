@@ -4,11 +4,11 @@ module.exports = {
     [
       '@vue/app',
       {
-        useBuiltIns: "entry",
+        useBuiltIns: 'entry',
         polyfills: [
           'es6.promise'
         ]
-      },
+      }
     ],
     'airbnb'
   ]

@@ -1,24 +1,32 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <SimpleColorPicker :color="color" @colorChange="colorChanged" />
+      <SimpleColorPicker
+        :color="color"
+        @colorChange="colorChanged"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import SimpleColorPicker from "../src/simpleColorPicker/ColorPicker.vue";
+import SimpleColorPicker from '../src/simpleColorPicker/ColorPicker.vue';
 
 export default {
-  name: "app",
+  name: 'App',
   components: {
     SimpleColorPicker
   },
   data() {
     return {
       color: {
-        type: "cmyk",
-        channels: [0, 0, 0, 0]
+        type: 'cmyk',
+        channels: [
+          0,
+          0,
+          0,
+          0
+        ]
       }
     };
   },
