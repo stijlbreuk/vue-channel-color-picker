@@ -52,12 +52,12 @@
           :force-color="forceColor"
           :type="activeType.toLowerCase()"
           :color="currentColor"
-          @colorChange="changeColor"
+          @color-change="changeColor"
         />
         <ColorValues
           :color="getColorValues"
           :type="activeType.toLowerCase()"
-          @colorChange="forceColorChange"
+          @color-change="forceColorChange($event, true)"
         />
       </div>
     </transition>
@@ -111,7 +111,7 @@ export default {
   data() {
     return {
       open: false,
-      activeType: 'rgb',
+      activeType: this.color.type,
       forceColor: false,
       colorCache: null,
       clicked: null,
@@ -225,18 +225,25 @@ export default {
 
       this.forceColorChange(newColor);
     },
-    forceColorChange(color) {
+    forceColorChange(color, input) {
       this.forceColor = true;
-      this.changeColor(Color(color));
+      if (this.activeType === 'gray') {
+        color = {
+          h: 0,
+          s: 0,
+          v: 100 - color.gray
+        };
+      }
+      this.changeColor(Color(color).hsv(), input);
 
       this.$nextTick(() => {
         this.forceColor = false;
       });
     },
-    changeColor(color) {
+    changeColor(color, input) {
       let channels;
       if (this.activeType === 'gray') {
-        const gray = this.getGrayScale(color);
+        const gray = this.getGrayScale(color, input);
         channels = [
           gray
         ];
@@ -246,7 +253,7 @@ export default {
           .array();
       }
 
-      this.$emit('colorChange', {
+      this.$emit('color-change', {
         type: this.activeType,
         channels
       });

@@ -3,7 +3,7 @@
     <div class="app-wrapper">
       <ChannelColorPicker
         :color="color"
-        @colorChange="colorChanged"
+        @color-change="colorChanged"
       />
     </div>
   </div>
@@ -25,7 +25,7 @@ export default {
           0,
           0,
           0,
-          0
+          100
         ]
       }
     };

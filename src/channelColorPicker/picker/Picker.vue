@@ -140,10 +140,10 @@ export default {
       const saturationHeight = saturation.clientHeight || saturation.offsetHeight;
       const xOffset = saturation.getBoundingClientRect().left;
       const yOffset = saturation.getBoundingClientRect().top;
-      const pageX = e.pageX || (e.touches ? e.touches[0].pageX : 0);
-      const pageY = e.pageY || (e.touches ? e.touches[0].pageY : 0);
-      let leftPos = pageX - xOffset;
-      let topPos = pageY - yOffset;
+      const clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+      const clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+      let leftPos = clientX - xOffset;
+      let topPos = clientY - yOffset;
 
       if (leftPos < 0) {
         leftPos = 0;
@@ -170,7 +170,7 @@ export default {
       // use a separated gray pointer so the horizontal position does not interfere
       this.grayLeft = `${leftPos}px`;
 
-      this.$emit('colorChange', Color(this.hsv));
+      this.$emit('color-change', Color(this.hsv));
     },
     saturationUp() {
       document.removeEventListener('mousemove', this.saturationChange);
@@ -193,8 +193,8 @@ export default {
       const { hue } = this.$refs;
       const hueWidth = hue.clientWidth || hue.offsetWidth;
       const xOffset = hue.getBoundingClientRect().left;
-      const pageX = e.pageX || (e.touches ? e.touches[0].pageX : 0);
-      const left = pageX - xOffset;
+      const clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+      const left = clientX - xOffset;
       let h;
       let percent;
 
@@ -208,7 +208,7 @@ export default {
       }
 
       this.hsv.h = h;
-      this.$emit('colorChange', Color(this.hsv));
+      this.$emit('color-change', Color(this.hsv));
     },
     hueUp() {
       document.removeEventListener('mousemove', this.hueChange);

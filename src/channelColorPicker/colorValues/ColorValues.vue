@@ -89,7 +89,7 @@ export default {
       }
 
       this.currentColor[prop] = parseInt(value, 10);
-      this.$emit('colorChange', this.currentColor);
+      this.$emit('color-change', this.currentColor);
     }
   }
 };
