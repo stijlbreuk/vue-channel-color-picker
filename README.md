@@ -1,7 +1,7 @@
 # Vue Simple ColorPicker
 
 <p align="center">
-  <img src="[RAW GITHUB USER CONTENT LINK]" alt="Example"/>
+  <img src="https://raw.githubusercontent.com/stijlbreuk/vue-simple-color-picker/master/images/preview.png" alt="Example"/>
 </p>
 
 <p align="center">
@@ -103,7 +103,7 @@ In a script tag, this loads the component using the global Vue instance.
 
 ### Properties
 
-`color: object`
+`color: object`\
 The color object in `RGB`, `CMYK` or `Gray` and its channels.
 
 ```Javascript
@@ -129,7 +129,7 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 
 ### Events
 
-`@colorChange`
+`@colorChange`\
 Triggered when the color has been changed, returns the color object.
 
 ## Contributing
