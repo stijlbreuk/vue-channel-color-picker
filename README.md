@@ -1,4 +1,4 @@
-# Vue Channel ColorPicker
+# Vue Channel Color Picker
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/stijlbreuk/vue-channel-color-picker/master/images/preview.png" alt="Example"/>
@@ -92,7 +92,7 @@ new Vue({
 CommonJS
 
 ```JavaScript
-const ChannelColorPicker = require('vue-channel-color-picker');
+const VueChannelColorPicker = require('vue-channel-color-picker');
 ```
 
 In a script tag, this loads the component using the global Vue instance.
@@ -146,4 +146,4 @@ npm run bundle
 
 ## License
 
-[MIT](https://github.com/stijlbreuk/vue-channel-color-picker/blob/master/readme.md)
+[MIT](https://github.com/stijlbreuk/vue-channel-color-picker/blob/master/LICENSE)
