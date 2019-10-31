@@ -45,7 +45,7 @@ ES6 modules
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <channel-color-picker :color="color" @colorChange="colorChanged" />
+      <channel-color-picker :color="color" @color-change="colorChanged" />
     </div>
   </div>
 </template>
@@ -129,7 +129,7 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 
 ### Events
 
-`@colorChange`\
+`@color-change`\
 Triggered when the color has been changed, returns the color object.
 
 ## Contributing
