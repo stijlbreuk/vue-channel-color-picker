@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <SimpleColorPicker
+      <ChannelColorPicker
         :color="color"
         @colorChange="colorChanged"
       />
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import SimpleColorPicker from '../src/simpleColorPicker/ColorPicker.vue';
+import ChannelColorPicker from '../src/channelColorPicker/ColorPicker.vue';
 
 export default {
   name: 'App',
   components: {
-    SimpleColorPicker
+    ChannelColorPicker
   },
   data() {
     return {

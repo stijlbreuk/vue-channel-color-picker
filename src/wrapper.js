@@ -1,11 +1,11 @@
 // Import vue component
-import component from './simpleColorPicker/ColorPicker.vue';
+import component from './channelColorPicker/ColorPicker.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('SimpleColorPicker', component);
+  Vue.component('ChannelColorPicker', component);
 }
 
 // Create module definition for Vue.use()
@@ -27,5 +27,5 @@ if (GlobalVue) {
 // To allow use as module (npm/webpack/etc.) export component
 export default {
   install,
-  SimpleColorPicker: component
+  ChannelColorPicker: component
 };

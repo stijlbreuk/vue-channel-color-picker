@@ -1,17 +1,17 @@
 {
-  "name": "vue-simple-color-picker",
+  "name": "vue-channel-color-picker",
   "version": "0.1.0",
   "description": "A RGB, CMYK & Graytone color Picker",
   "author": "Stijlbreuk",
-  "main": "dist/VueSimpleColorPicker.umd.js",
-  "module": "dist/VueSimpleColorPicker.common.js",
-  "unpkg": "dist/VueSimpleColorPicker.umd.min.js",
+  "main": "dist/VueChannelColorPicker.umd.js",
+  "module": "dist/VueChannelColorPicker.common.js",
+  "unpkg": "dist/VueChannelColorPicker.umd.min.js",
   "browser": {
-    "./simpleColorPicker": "src/simpleColorPicker/ColorPicker.vue"
+    "./channelColorPicker": "src/channelColorPicker/ColorPicker.vue"
   },
   "scripts": {
     "serve": "vue serve --open examples/main.js",
-    "build": "vue-cli-service build --target lib --name VueSimpleColorPicker ./src/wrapper.js",
+    "build": "vue-cli-service build --target lib --name VueChannelColorPicker ./src/wrapper.js",
     "lint": "run-s lint:all:*",
     "prepublishOnly": "npm run build",
     "build:staging": "vue-cli-service build --mode staging",
@@ -61,6 +61,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stijlbreuk/vue-simple-color-picker.git"
+    "url": "https://github.com/stijlbreuk/vue-channel-color-picker.git"
   }
 }

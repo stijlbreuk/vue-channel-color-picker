@@ -1,40 +1,40 @@
-# Vue Simple ColorPicker
+# Vue Channel ColorPicker
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/stijlbreuk/vue-simple-color-picker/master/images/preview.png" alt="Example"/>
+  <img src="https://raw.githubusercontent.com/stijlbreuk/vue-channel-color-picker/master/images/preview.png" alt="Example"/>
 </p>
 
 <p align="center">
 
-<a href="https://www.npmjs.com/package/vue-simple-color-picker">
-    <img src="https://img.shields.io/npm/v/vue-simple-color-picker.svg" alt="Version"/>
+<a href="https://www.npmjs.com/package/vue-channel-color-picker">
+    <img src="https://img.shields.io/npm/v/vue-channel-color-picker.svg" alt="Version"/>
 </a>
-<a href="https://www.npmjs.com/package/vue-simple-color-picker">
-    <img src="https://img.shields.io/npm/dt/vue-simple-color-picker.svg" alt="Downloads"/>
+<a href="https://www.npmjs.com/package/vue-channel-color-picker">
+    <img src="https://img.shields.io/npm/dt/vue-channel-color-picker.svg" alt="Downloads"/>
 </a>
-<a href="https://www.npmjs.com/package/vue-simple-color-picker">
-    <img src="https://img.shields.io/npm/l/vue-simple-color-picker.svg" alt="License"/>
+<a href="https://www.npmjs.com/package/vue-channel-color-picker">
+    <img src="https://img.shields.io/npm/l/vue-channel-color-picker.svg" alt="License"/>
 </a>
-<a href="https://www.npmjs.com/package/vue-simple-color-picker">
-    <img src="https://img.badgesize.io/https://unpkg.com/vue-simple-color-picker" alt="Size"/>
+<a href="https://www.npmjs.com/package/vue-channel-color-picker">
+    <img src="https://img.badgesize.io/https://unpkg.com/vue-channel-color-picker" alt="Size"/>
 </a>
 
 </p>
 
 <p align="center">
-A plainly simple RGB, CMYK & Graytone color-picker.
+An easy to use channel based RGB, CMYK & Graytone color picker.
 </p>
 
 ## Demo
 
 ### Basic
 
-<a href="https://codesandbox.io/s/vue-simple-color-picker-do7xu?fontsize=14" target="_blank"><img src="https://codesandbox.io/static/img/play-codesandbox.svg"/></a>
+<a href="https://codesandbox.io/s/vue-channel-color-picker-do7xu?fontsize=14" target="_blank"><img src="https://codesandbox.io/static/img/play-codesandbox.svg"/></a>
 
 ## Installation
 
 ```
-npm install --save vue-simple-color-picker
+npm install --save vue-channel-color-picker
 ```
 
 ## Usage
@@ -45,7 +45,7 @@ ES6 modules
 <template>
   <div id="app">
     <div class="app-wrapper">
-      <simple-color-picker :color="color" @colorChange="colorChanged" />
+      <channel-color-picker :color="color" @colorChange="colorChanged" />
     </div>
   </div>
 </template>
@@ -70,17 +70,17 @@ export default {
 </script>
 ```
 
-Register SimpleColorPicker component globally.
+Register ChannelColorPicker component globally.
 
 ```Javascript
 // main.js
 import Vue from 'vue';
 
-import VueSimpleColorPicker from 'vue-simple-color-picker';
+import VueChannelColorPicker from 'vue-channel-color-picker';
 
 import App from './App.vue';
 
-Vue.use(VueSimpleColorPicker);
+Vue.use(VueChannelColorPicker);
 
 Vue.config.productionTip = false;
 
@@ -92,13 +92,13 @@ new Vue({
 CommonJS
 
 ```JavaScript
-const SimpleColorPicker = require('vue-simple-color-picker');
+const ChannelColorPicker = require('vue-channel-color-picker');
 ```
 
 In a script tag, this loads the component using the global Vue instance.
 
 ```HTML
-<script src="https://unpkg.com/vue-simple-color-picker"></script>
+<script src="https://unpkg.com/vue-channel-color-picker"></script>
 ```
 
 ### Properties
@@ -134,11 +134,11 @@ Triggered when the color has been changed, returns the color object.
 
 ## Contributing
 
-Checkout [GitHub issues](https://github.com/stijlbreuk/vue-simple-color-picker/issues) for any issues we need some help with.
+Checkout [GitHub issues](https://github.com/stijlbreuk/vue-channel-color-picker/issues) for any issues we need some help with.
 
 ```bash
 # Serve with hot reload (default at localhost:8080)
-vue serve --open src/simpleColorPicker/ColorPicker.vue
+vue serve --open src/channelColorPicker/ColorPicker.vue
 
 # Build all variants
 npm run bundle
@@ -146,4 +146,4 @@ npm run bundle
 
 ## License
 
-[MIT](https://github.com/stijlbreuk/vue-simple-color-picker/blob/master/readme.md)
+[MIT](https://github.com/stijlbreuk/vue-channel-color-picker/blob/master/readme.md)
