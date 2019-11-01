@@ -226,15 +226,16 @@ export default {
       this.forceColorChange(newColor);
     },
     forceColorChange(color, input) {
+      let colorChange = color;
       this.forceColor = true;
       if (this.activeType === 'gray') {
-        color = {
+        colorChange = {
           h: 0,
           s: 0,
           v: 100 - color.gray
         };
       }
-      this.changeColor(Color(color), input);
+      this.changeColor(Color(colorChange), input);
 
       this.$nextTick(() => {
         this.forceColor = false;
