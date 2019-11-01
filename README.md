@@ -1,7 +1,7 @@
 # Vue Channel Color Picker
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/stijlbreuk/vue-channel-color-picker/master/images/preview.png" alt="Example"/>
+  <img src="https://raw.githubusercontent.com/stijlbreuk/vue-channel-color-picker/master/images/channel-picker-example.gif" alt="Example"/>
 </p>
 
 <p align="center">
