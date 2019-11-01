@@ -103,7 +103,20 @@ export default {
       document.body.style.cursor = cursor ? 'pointer' : null;
     },
     setColor(color) {
+      if (color.model === 'cmyk') {
+        if (color.color[3] === 100) {
+          color = Color({
+            c: color.color[0],
+            m: color.color[1],
+            y: color.color[2],
+            k: 99.9
+          });
+        }
+      }
+
+      console.log(color);
       const hsv = color.hsv().object();
+      console.log(hsv);
 
       if (this.hsv) {
         this.hsv.s = hsv.s;

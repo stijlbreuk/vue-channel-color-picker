@@ -234,7 +234,7 @@ export default {
           v: 100 - color.gray
         };
       }
-      this.changeColor(Color(color).hsv(), input);
+      this.changeColor(Color(color), input);
 
       this.$nextTick(() => {
         this.forceColor = false;
