@@ -105,6 +105,7 @@ export default {
     setColor(color) {
       if (color.model === 'cmyk') {
         if (color.color[3] === 100) {
+          // eslint-disable-next-line no-param-reassign
           color = Color({
             c: color.color[0],
             m: color.color[1],
