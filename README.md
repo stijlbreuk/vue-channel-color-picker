@@ -128,8 +128,8 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 ```
 
 `colorPreset: Array`\
-Adds some pre-defined colors.
-Color given can be any css-valid color String.
+Adds some pre-defined colors.\
+Color given can be any css-valid color String.\
 Or, ofcourse, a type + channel.
 
 - Note that maximum 18 colors can be shown at the time
