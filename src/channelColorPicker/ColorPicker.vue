@@ -131,7 +131,7 @@ export default {
   },
   data() {
     return {
-      open: true,
+      open: false,
       activeType: this.color.type,
       forceColor: false,
       colorCache: null,
