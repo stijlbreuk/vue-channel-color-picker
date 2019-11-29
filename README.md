@@ -133,7 +133,7 @@ Adds some pre-defined colors.\
 Color given can be any css-valid color String.\
 Or, ofcourse, a type + channel.
 
-- Note that maximum 18 colors can be shown at the time
+- Note that maximum 14 colors can be shown at the time
 
 ```Javascript
 [

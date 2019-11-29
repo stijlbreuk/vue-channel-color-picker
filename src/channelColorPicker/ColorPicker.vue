@@ -63,18 +63,21 @@
           v-if="colorPreset"
           class="sb-color_picker-preset"
         >
-          <template v-for="(bgColor, index) in colorPresetColors">
-            <div
-              v-if="index < 18"
-              :key="`color-preset-${index}`"
-              class="sb-color_picker-preset_color"
-              @click="forceColorChange(bgColor)"
-            >
-              <span
-                :style="{background: bgColor.rgb().string()}"
-              ></span>
-            </div>
-          </template>
+          <span>Global colors:</span>
+          <div class="sb-color_picker-preset_wrapper">
+            <template v-for="(bgColor, index) in colorPresetColors">
+              <div
+                v-if="index < 14"
+                :key="`color-preset-${index}`"
+                class="sb-color_picker-preset_color"
+                @click="forceColorChange(bgColor)"
+              >
+                <span
+                  :style="{background: bgColor.rgb().string()}"
+                ></span>
+              </div>
+            </template>
+          </div>
         </div>
       </div>
     </transition>
