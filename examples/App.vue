@@ -32,14 +32,6 @@ export default {
       colorPreset: [
         'red',
         '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
-        '#fffaaa',
         'rgb(150, 150, 150)',
         {
           type: 'cmyk',

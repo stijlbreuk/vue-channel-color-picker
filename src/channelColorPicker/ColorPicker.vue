@@ -266,7 +266,7 @@ export default {
         colorChange = {
           h: 0,
           s: 0,
-          v: 100 - color.gray
+          v: 100 - this.getGrayScale(color)
         };
       }
       this.changeColor(Color(colorChange), input);
