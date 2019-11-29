@@ -127,6 +127,7 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 }
 ```
 
+\
 `colorPreset: Array`\
 Adds some pre-defined colors.\
 Color given can be any css-valid color String.\
