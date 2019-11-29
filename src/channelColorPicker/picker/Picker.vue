@@ -114,9 +114,7 @@ export default {
         }
       }
 
-      console.log(color);
       const hsv = color.hsv().object();
-      console.log(hsv);
 
       if (this.hsv) {
         this.hsv.s = hsv.s;

@@ -59,6 +59,23 @@
           :type="activeType.toLowerCase()"
           @color-change="forceColorChange($event, true)"
         />
+        <div
+          v-if="colorPreset"
+          class="sb-color_picker-preset"
+        >
+          <template v-for="(bgColor, index) in colorPresetColors">
+            <div
+              v-if="index < 18"
+              :key="`color-preset-${index}`"
+              class="sb-color_picker-preset_color"
+              @click="forceColorChange(bgColor)"
+            >
+              <span
+                :style="{background: bgColor.rgb().string()}"
+              ></span>
+            </div>
+          </template>
+        </div>
       </div>
     </transition>
   </div>
@@ -87,6 +104,10 @@ export default {
       type: Boolean,
       default: true
     },
+    colorPreset: {
+      type: Array,
+      default: null
+    },
     color: {
       type: [
         String,
@@ -110,7 +131,7 @@ export default {
   },
   data() {
     return {
-      open: false,
+      open: true,
       activeType: this.color.type,
       forceColor: false,
       colorCache: null,
@@ -126,14 +147,7 @@ export default {
   },
   computed: {
     currentColor() {
-      if (this.color.type === 'gray') {
-        return Color.hsv({
-          h: 0,
-          s: 0,
-          v: 100 - this.color.channels[0]
-        });
-      }
-      return Color[this.color.type](this.color.channels);
+      return this.getCurrentColor(this.color);
     },
     getColorValues() {
       if (this.activeType === 'cmyk') {
@@ -154,6 +168,15 @@ export default {
       return {
         gray
       };
+    },
+    colorPresetColors() {
+      return this.colorPreset.map((color) => {
+        if (color.type) {
+          return this.getCurrentColor(color);
+        }
+
+        return Color(color);
+      });
     }
   },
   watch: {
@@ -170,6 +193,17 @@ export default {
     }
   },
   methods: {
+    getCurrentColor(color) {
+      if (color.type === 'gray') {
+        return Color.hsv({
+          h: 0,
+          s: 0,
+          v: 100 - color.channels[0]
+        });
+      }
+
+      return Color[color.type](color.channels);
+    },
     mouseDown(e) {
       this.clicked = true;
       this.canClick = true;

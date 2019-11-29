@@ -3,6 +3,7 @@
     <div class="app-wrapper">
       <ChannelColorPicker
         :color="color"
+        :color-preset="colorPreset"
         @color-change="colorChanged"
       />
     </div>
@@ -27,7 +28,29 @@ export default {
           0,
           100
         ]
-      }
+      },
+      colorPreset: [
+        'red',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        '#fffaaa',
+        'rgb(150, 150, 150)',
+        {
+          type: 'cmyk',
+          channels: [
+            30,
+            10,
+            50,
+            40
+          ]
+        }
+      ]
     };
   },
   methods: {

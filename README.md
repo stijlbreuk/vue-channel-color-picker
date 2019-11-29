@@ -127,6 +127,25 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 }
 ```
 
+`colorPreset: Array`\
+Adds some pre-defined colors.
+Color given can be any css-valid color String.
+Or, ofcourse, a type + channel.
+
+- Note that maximum 18 colors can be shown at the time
+
+```Javascript
+[
+  'red',
+  '#ffaaa',
+  'rgb(255, 255, 255)',
+  {
+    type: "cmyk",
+    channels: [0, 0, 0, 0]
+  }
+]
+```
+
 ### Events
 
 `@color-change`\
