@@ -193,6 +193,9 @@ export default {
       } else if (oldType === 'gray') {
         this.getCachedColor(newType);
       }
+    },
+    open(val) {
+      this.$emit('is-open', val);
     }
   },
   methods: {

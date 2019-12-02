@@ -152,6 +152,10 @@ Or, ofcourse, a type + channel.
 `@color-change`\
 Triggered when the color has been changed, returns the color object.
 
+\
+`@is-open`\
+Triggered when the colorpicker is being toggled, returns current state
+
 ## Contributing
 
 Checkout [GitHub issues](https://github.com/stijlbreuk/vue-channel-color-picker/issues) for any issues we need some help with.
