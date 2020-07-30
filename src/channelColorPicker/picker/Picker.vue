@@ -168,8 +168,8 @@ export default {
         topPos = saturationHeight;
       }
 
-      const s = (leftPos * 100 / saturationWidth);
-      const v = (-(topPos * 100 / saturationHeight) + 100);
+      const s = (leftPos * 100) / saturationWidth;
+      const v = (-(topPos * 100) / saturationHeight) + 100;
 
       // set the color
       this.hsv.v = v;
@@ -215,8 +215,8 @@ export default {
       } else if (left >= hueWidth) {
         h = 359;
       } else {
-        percent = (left * 100 / hueWidth);
-        h = (360 * percent / 100);
+        percent = (left * 100) / hueWidth;
+        h = (360 * percent) / 100;
       }
 
       this.hsv.h = h;

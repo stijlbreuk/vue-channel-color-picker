@@ -38,7 +38,7 @@
         v-if="open"
         class="sb-color_picker-picker"
       >
-        <ul class="sb-color_picker-picker-list">
+        <ul class="sb-color_picker-picker-list" v-if="types.length > 1">
           <li
             v-for="(type, index) in types"
             :key="`color-type-${index}`"
@@ -107,6 +107,10 @@ export default {
       type: Boolean,
       default: true
     },
+    colorTypes: {
+      type: [Array, String],
+      default: () => []
+    },
     colorPreset: {
       type: Array,
       default: null
@@ -134,21 +138,48 @@ export default {
   },
   data() {
     return {
-      open: false,
+      open: true,
       activeType: this.color.type,
       forceColor: false,
       colorCache: null,
       clicked: null,
       canClick: null,
       focused: null,
-      types: [
-        'Gray',
-        'RGB',
-        'CMYK'
-      ]
     };
   },
   computed: {
+    types(){
+      const types = [
+        'Gray',
+        'RGB',
+        'CMYK'
+      ];
+
+      let colorTypes = this.colorTypes;
+      if(!Array.isArray(colorTypes)){
+        colorTypes = [colorTypes];
+      }
+
+      if(!colorTypes.length){
+        return types;
+      }
+
+      const hasActiveType = colorTypes.some(colorType =>
+        colorType.toLowerCase() === this.activeType.toLowerCase()
+      );
+      if(!hasActiveType){
+        const typeIndex = types.findIndex(type =>
+          type.toLowerCase() === this.activeType.toLowerCase()
+        );
+        colorTypes.push(types[typeIndex]);
+      }
+
+      return types.filter(type =>
+        colorTypes.some(colorType =>
+          colorType.toLowerCase() === type.toLowerCase()
+        )
+      );
+    },
     currentColor() {
       return this.getCurrentColor(this.color);
     },

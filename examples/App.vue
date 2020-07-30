@@ -3,6 +3,7 @@
     <div class="app-wrapper">
       <ChannelColorPicker
         :color="color"
+        colorTypes="CMYK"
         :color-preset="colorPreset"
         @color-change="colorChanged"
       />

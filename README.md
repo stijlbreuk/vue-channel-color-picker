@@ -128,12 +128,25 @@ The color object in `RGB`, `CMYK` or `Gray` and its channels.
 ```
 
 \
+`colorTypes: Array or String`\
+The color types to use in the color picker.\
+
+- Note: If the type of the current color you are using is missing in this list, it will be added.
+
+```Javascript
+[
+  'RGB',
+  'CMYK'
+]
+```
+
+\
 `colorPreset: Array`\
 Adds some pre-defined colors.\
 Color given can be any css-valid color String.\
 Or, ofcourse, a type + channel.
 
-- Note that maximum 14 colors can be shown at the time
+- Note: Maximum 14 colors can be shown at the time
 
 ```Javascript
 [
